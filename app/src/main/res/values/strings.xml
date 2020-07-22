@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name" translatable="false">starter_project</string>
+    <string name="leak_canary_display_activity_label" translatable="false">leaks-starter-project</string>
+
+    <string name="bottomsheet_dialog_text"> Example Bottomsheet Dialog </string>
+    <string name="bottomsheet_button_text"> Show Bottomsheet Dialog </string>
+    <string name="progress_button_text"> Show Progress Dialog </string>
+    <string name="language_button_text"> Change Language </string>
+    <string name="theme_button_text"> Change Theme </string>
+</resources>

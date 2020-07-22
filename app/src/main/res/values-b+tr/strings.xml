@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bottomsheet_dialog_text">Example Bottomsheet Dialog yazısı</string>
+    <string name="bottomsheet_button_text">Bottomsheet Dialog göster</string>
+    <string name="progress_button_text">Progress Dialog Göster</string>
+    <string name="language_button_text">Dil Değiştir</string>
+    <string name="theme_button_text">Tema Değiştir</string>
+</resources>

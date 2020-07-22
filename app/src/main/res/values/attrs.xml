@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="materialAnimatedSwitch">
+        <attr name="icon_release" format="reference" />
+        <attr name="icon_press" format="reference" />
+        <attr name="base_release_color" format="color" />
+        <attr name="base_press_color" format="color" />
+        <attr name="ball_release_color" format="color" />
+        <attr name="ball_press_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomMenuItem">
+        <attr name="Icon" format="reference" />
+        <attr name="titleText" format="string" />
+        <attr name="msgText" format="string" />
+        <attr name="msgIcon" format="reference" />
+
+    </declare-styleable>
+
+    <declare-styleable name="PagingLayout">
+        <attr name="isLoadingEnabled" format="boolean" />
+        <attr name="starPageIndex" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomSearchView">
+        <attr name="minCount" format="integer" />
+        <attr name="hintText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ButtonBarContainerTheme">
+        <attr name="metaButtonBarStyle" format="reference" />
+        <attr name="metaButtonBarButtonStyle" format="reference" />
+    </declare-styleable>
+    <attr name="flow_horizontalSeparator" />
+    <attr name="flow_verticalSeparator" />
+    <attr name="motionProgress" />
+    <attr name="waveDecay" />
+    <attr name="motionPathRotate" />
+    <attr name="duration" />
+
+</resources>

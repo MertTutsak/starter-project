@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/search_view_bg"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="10dp">
+
+    <ImageView
+            android:id="@+id/imageViewSearchIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/app_name"
+            android:src="@android:drawable/ic_menu_search" />
+
+    <EditText
+            android:id="@+id/editTextSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="8dp"
+            android:layout_toStartOf="@id/imageViewSearchClear"
+            android:layout_toEndOf="@id/imageViewSearchIcon"
+            android:background="@null"
+            android:hint="@string/app_name"
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textSize="16sp"
+            android:importantForAutofill="no" />
+
+    <ImageView
+            android:id="@+id/imageViewSearchClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@android:drawable/ic_delete"
+            android:visibility="invisible"
+            android:contentDescription="@string/app_name" />
+
+</RelativeLayout>

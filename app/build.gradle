@@ -1,0 +1,188 @@
+
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_versions.compile_sdk
+    buildToolsVersion build_versions.build_tools
+    defaultConfig {
+        multiDexEnabled true
+        applicationId app_id.id_live
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode app_version.version_code
+        versionName app_version.version_name
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArgument "listener", "leakcanary.FailTestOnLeakRunListener"
+    }
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'Boolean', 'LOG_ENABLED', 'false'
+            signingConfig signingConfigs.debug
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField 'Boolean', 'LOG_ENABLED', 'true'
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        liveFlavor {
+            applicationId app_id.id_live
+            android.defaultConfig.applicationId app_id.id_live
+            ext.betaDistributionReleaseNotes = "LiveReleaseNote"
+            ext.betaDistributionGroupAliases = "qa,managers,android-developers"
+            ext.betaDistributionNotifications = true
+            buildConfigField 'String', 'X_APP_KEY', '"test"'
+            buildConfigField 'String', 'MAPS_KEY', '"AIzaSyCNHTPJ6E1FEz_aZw4aBKPLAC1-8QkEheo"'
+            buildConfigField 'String', 'INSTABUG_KEY', '"test"'
+            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/\"")
+        }
+        devFlavor {
+            applicationId app_id.id_dev
+            android.defaultConfig.applicationId app_id.id_dev
+            ext.betaDistributionReleaseNotes = "devReleaseNote"
+            ext.betaDistributionGroupAliases = "qa,managers,android-developers"
+            ext.betaDistributionNotifications = true
+            buildConfigField 'String', 'X_APP_KEY', '"test"'
+            buildConfigField 'String', 'MAPS_KEY', '"AIzaSyCNHTPJ6E1FEz_aZw4aBKPLAC1-8QkEheo"'
+            buildConfigField 'String', 'INSTABUG_KEY', '"test"'
+            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/\"")
+        }
+    }
+    signingConfigs {
+        debug {
+            storeFile file("../resources/tools/debug.keystore")
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+            storePassword "android"
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+        /*test*/
+        testImplementation deps.junit
+        androidTestImplementation deps.androidx.test_runner
+        androidTestImplementation deps.androidx.espresso_core
+        /*test*/
+
+        /*androidx*/
+        implementation deps.androidx.appcompat
+        implementation deps.androidx.core_ktx
+        implementation deps.androidx.lifecycle
+        implementation deps.androidx.constraintlayout
+        /*androidx*/
+
+        /*butterknife*/
+        implementation deps.butterknife.runtime
+        annotationProcessor deps.butterknife.compiler
+        kapt deps.butterknife.compiler
+        /*butterknife*/
+
+        /*firebase*/
+        implementation deps.firebase.firebase_analytics
+        implementation deps.firebase.firebase_core
+        implementation deps.firebase.firebase_messaging
+        implementation deps.firebase.firebase_dynamiclink
+        /*firebase*/
+
+        /*google_play_services*/
+        implementation deps.google_play_services.location
+        implementation deps.google_play_services.maps
+        implementation deps.google_play_services.gcm
+        /*google_play_services*/
+
+        /*google*/
+        implementation deps.google.material
+        implementation deps.google.gson
+        /*google*/
+
+        /*dagger*/
+        implementation deps.dagger.dagger
+        implementation deps.dagger.android
+        implementation deps.dagger.support
+        kapt deps.dagger.compiler
+        kapt deps.dagger.processor
+        /*dagger*/
+
+        /*rxjava2*/
+        implementation deps.rxjava2.rxandroid
+        implementation deps.rxjava2.adapter
+        implementation deps.rxjava2.room
+        /*rxjava2*/
+
+        /*room*/
+        implementation deps.room.runtime
+        kapt deps.room.compiler
+        /*room*/
+
+        /*crashlytics*//*
+        implementation(deps.crashlytics) {
+            transitive = true
+        }
+        *//*crashlytics*/
+
+        /*retrofit*/
+        implementation deps.squareup.retrofit.runtime
+        implementation deps.squareup.retrofit.gson
+        /*retrofit*/
+
+        /*picasso*/
+        implementation deps.squareup.picasso
+        /*picasso*/
+
+        /*leak_canary*/
+        debugImplementation deps.leak_canary.debug
+        releaseImplementation deps.leak_canary.live
+        /*leak_canary*/
+
+        /*chuck*/
+        debugImplementation deps.chuck.debug
+        releaseImplementation deps.chuck.live
+        /*chuck*/
+
+        /*stetho*/
+        implementation deps.facebook.stetho
+        implementation deps.facebook.stetho_okhttp3
+        /*stetho*/
+
+        /*others*/
+        implementation deps.squareup.otto
+        implementation deps.sdp
+        implementation deps.logger
+        implementation deps.easy_permission
+        implementation deps.glide
+        implementation deps.lottie
+        implementation deps.spinKit
+        /*others*/
+    }
+    apply plugin: 'com.google.gms.google-services'
+
+}
