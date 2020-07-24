@@ -1,19 +1,15 @@
 package com.merttutsak.starter.utility.provider
 
-import android.content.Context
-import com.merttutsak.starter.data.local.preferences.AppPreferenceHelper
+import com.merttutsak.starter.data.local.preferences.SharedPrefHelper
 import com.merttutsak.starter.ui.common.base.view.activity.BaseActivity
 import java.io.Serializable
 import javax.inject.Inject
 
-class AppLanguageProvider @Inject internal constructor(val context: Context) {
+class AppLanguageProvider @Inject internal constructor(private val appSharedPreferences: SharedPrefHelper) {
     private var appLanguage: LanguageType? = null
 
     fun getAppLanguage(): LanguageType {
-        var currentLanguage = AppPreferenceHelper(
-            context,
-            AppPreferenceHelper.PREF_KEY_CURRENT_LANGUAGE
-        ).getAppLanguage()
+        var currentLanguage = appSharedPreferences.getAppLanguage()
 
         appLanguage = if (currentLanguage.isNullOrEmpty()) {
             DEFAULT_LANG
@@ -29,10 +25,7 @@ class AppLanguageProvider @Inject internal constructor(val context: Context) {
     }
 
     fun setLanguage(activity: BaseActivity<*, *>, languageType: LanguageType) {
-        AppPreferenceHelper(
-            activity,
-            AppPreferenceHelper.PREF_KEY_CURRENT_LANGUAGE
-        ).setAppLanguage(languageType.code())
+        appSharedPreferences.setAppLanguage(languageType.code())
         activity.recreate()
         BusProvider.getInstance().post(LanguageChangeEvent())
     }

@@ -3,7 +3,7 @@ package com.merttutsak.starter.data.local.preferences
 import com.merttutsak.starter.utility.Constants
 
 
-interface PreferenceHelper {
+interface SharedPrefHelper {
 
     fun getAppTheme(): Int
 

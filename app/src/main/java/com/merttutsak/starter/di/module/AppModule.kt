@@ -2,12 +2,12 @@ package com.merttutsak.starter.di.module
 
 import android.content.Context
 import com.merttutsak.starter.app.App
-import com.merttutsak.starter.data.local.preferences.PreferenceHelper
+import com.merttutsak.starter.data.local.preferences.SharedPrefHelper
 import com.merttutsak.starter.data.manager.AppDataManager
 import com.merttutsak.starter.data.manager.DataManager
 import com.merttutsak.starter.utility.helper.analytics.AnalyticsHelper
-import com.merttutsak.starter.utility.helper.analytics.FirebaseAnalyticsHelper
 import com.merttutsak.starter.utility.helper.ThemeHelper
+import com.merttutsak.starter.utility.helper.analytics.FirebaseAnalyticsHelper
 import com.merttutsak.starter.utility.provider.AppLanguageProvider
 import com.merttutsak.starter.utility.provider.SchedulerProvider
 import dagger.Module
@@ -33,8 +33,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideAppLanguage(context: Context): AppLanguageProvider {
-        return AppLanguageProvider(context)
+    fun provideAppLanguage(sharedPreferencesHelper: SharedPrefHelper): AppLanguageProvider {
+        return AppLanguageProvider(sharedPreferencesHelper)
     }
 
     @Singleton
@@ -44,6 +44,7 @@ class AppModule {
     ): AnalyticsHelper = FirebaseAnalyticsHelper(context)
 
     @Provides
-    fun provideTheme(preferenceHelper: PreferenceHelper): ThemeHelper = ThemeHelper(preferenceHelper)
+    fun provideTheme(sharedPrefHelper: SharedPrefHelper): ThemeHelper =
+        ThemeHelper(sharedPrefHelper)
 
 }

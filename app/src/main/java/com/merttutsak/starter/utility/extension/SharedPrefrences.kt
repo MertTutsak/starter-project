@@ -4,17 +4,8 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import androidx.fragment.app.Fragment
-import com.merttutsak.starter.data.local.preferences.AppPreferenceHelper.Companion.PREF_KEY_CURRENT_LANGUAGE
 
-//default olarak kullanmak istediğin değerleri buraya atamalısın
-const val PREF_KEY_USER_LOGGED_IN_MODE = "PREF_KEY_USER_LOGGED_IN_MODE"
-const val PREF_KEY_CURRENT_USER_ID = "PREF_KEY_CURRENT_USER_ID"
-const val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
-const val PREF_KEY_CURRENT_USER_NAME = "PREF_KEY_CURRENT_USER_NAME"
-const val PREF_KEY_CURRENT_USER_EMAIL = "PREF_KEY_CURRENT_USER_EMAIL"
-const val PREF_KEY_CURRENT_LANGUAGE = "PREF_KEY_CURRENT_LANGUAGE"
-
-var defaultPrefFileName = PREF_KEY_CURRENT_LANGUAGE
+var defaultPrefFileName = AppPreferenceHelper.SHARED_PREF_KEY.CURRENT_LANGUAGE.name
 var defaultMode: Int = MODE_PRIVATE
 
 fun Context.setInt(

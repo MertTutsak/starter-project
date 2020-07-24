@@ -3,16 +3,12 @@ package com.merttutsak.starter.utility.helper
 import android.content.Context
 import android.util.TypedValue
 import androidx.annotation.StyleRes
-import com.merttutsak.starter.R
-import androidx.appcompat.app.AppCompatDelegate
-import com.merttutsak.starter.data.local.preferences.PreferenceHelper
+import com.merttutsak.starter.data.local.preferences.SharedPrefHelper
 import com.merttutsak.starter.ui.common.base.view.activity.BaseActivity
-import com.merttutsak.starter.utility.extension.isFalse
-import com.merttutsak.starter.utility.provider.BusProvider
 import java.io.Serializable
 import javax.inject.Inject
 
-class ThemeHelper @Inject constructor(val preferenceHelper: PreferenceHelper) {
+class ThemeHelper @Inject constructor(val sharedPrefHelper: SharedPrefHelper) {
 
     companion object {
         fun getTypeValue(context: Context, attrId: Int): TypedValue {
@@ -23,7 +19,7 @@ class ThemeHelper @Inject constructor(val preferenceHelper: PreferenceHelper) {
     }
 
     fun getModeValue(): Int {
-        val value = preferenceHelper.getAppTheme()
+        val value = sharedPrefHelper.getAppTheme()
         if (value == 0) {
             return AppCompatDelegate.MODE_NIGHT_NO
         }
@@ -43,7 +39,7 @@ class ThemeHelper @Inject constructor(val preferenceHelper: PreferenceHelper) {
 
     fun setDarkTheme(activity: BaseActivity<*,*>, isInit: Boolean = false) {
         if(AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_YES){
-            preferenceHelper.setAppTheme(AppCompatDelegate.MODE_NIGHT_YES)
+            sharedPrefHelper.setAppTheme(AppCompatDelegate.MODE_NIGHT_YES)
             activity.setTheme(R.style.AppTheme_Base_Night)
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
             isInit.isFalse {
@@ -55,7 +51,7 @@ class ThemeHelper @Inject constructor(val preferenceHelper: PreferenceHelper) {
 
     fun setLightTheme(activity: BaseActivity<*,*>, isInit: Boolean = false) {
         if(AppCompatDelegate.getDefaultNightMode() != AppCompatDelegate.MODE_NIGHT_NO){
-            preferenceHelper.setAppTheme(AppCompatDelegate.MODE_NIGHT_NO)
+            sharedPrefHelper.setAppTheme(AppCompatDelegate.MODE_NIGHT_NO)
             activity.setTheme(R.style.AppTheme_Base_Light)
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             isInit.isFalse {
@@ -65,7 +61,7 @@ class ThemeHelper @Inject constructor(val preferenceHelper: PreferenceHelper) {
         }
     }
 
-    fun isDarkTheme(): Boolean = preferenceHelper.getAppTheme() == AppCompatDelegate.MODE_NIGHT_YES
+    fun isDarkTheme(): Boolean = sharedPrefHelper.getAppTheme() == AppCompatDelegate.MODE_NIGHT_YES
 
 }
 

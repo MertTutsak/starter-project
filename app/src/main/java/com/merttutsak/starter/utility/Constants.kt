@@ -9,7 +9,7 @@ object Constants {
         internal val APP_DB_NAME = "base_starter_db"
         internal val PREF_NAME = "base_starter_pref"
 
-        enum class LoggedInMode constructor() {
+        enum class LoggedInMode {
             LOGGED_IN_MODE_LOGGED_OUT,
             LOGGED_IN_MODE_GOOGLE,
             LOGGED_IN_MODE_FB,

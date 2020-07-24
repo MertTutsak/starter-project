@@ -2,11 +2,11 @@ package com.merttutsak.starter.data.manager
 
 import com.merttutsak.starter.data.local.db.AppDatabase
 import com.merttutsak.starter.data.local.db.model.entity.Data
-import com.merttutsak.starter.data.local.preferences.PreferenceHelper
+import com.merttutsak.starter.data.local.preferences.SharedPrefHelper
 import com.merttutsak.starter.data.remote.service.api.ApiHelperImp
 import com.merttutsak.starter.utility.Constants
-import com.merttutsak.starter.utility.helper.analytics.AnalyticsHelper
 import com.merttutsak.starter.utility.extension.isNull
+import com.merttutsak.starter.utility.helper.analytics.AnalyticsHelper
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
@@ -15,7 +15,7 @@ class AppDataManager @Inject internal constructor(
     val compositeDisposable: CompositeDisposable,
     val apiHelperImp: ApiHelperImp,
     val db: AppDatabase,
-    val preferenceHelper: PreferenceHelper
+    val sharedPrefHelper: SharedPrefHelper
 ) : DataManager {
     @Inject
     override lateinit var analyticsHelper: AnalyticsHelper
@@ -35,11 +35,11 @@ class AppDataManager @Inject internal constructor(
     }
 
     override fun isUserLoggedIn(): Boolean {
-        return this.preferenceHelper.getUserLoggedInMode() != Constants.App.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.ordinal
+        return this.sharedPrefHelper.getUserLoggedInMode() != Constants.App.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.ordinal
     }
 
     override fun performUserLogout() {
-        preferenceHelper.let {
+        sharedPrefHelper.let {
             it.setUserLoggedInMode(Constants.App.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT)
         }
     }
