@@ -12,7 +12,6 @@ import javax.inject.Inject
 
 
 class AppDataManager @Inject internal constructor(
-    val compositeDisposable: CompositeDisposable,
     val apiHelperImp: ApiHelperImp,
     val db: AppDatabase,
     val sharedPrefHelper: SharedPrefHelper
