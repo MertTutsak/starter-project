@@ -3,7 +3,6 @@ package com.merttutsak.starter.data.local.preferences
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.core.content.edit
-import com.merttutsak.starter.di.annotation.PreferenceInfo
 
 import com.merttutsak.starter.utility.Constants
 import com.merttutsak.starter.utility.provider.AppLanguageProvider
