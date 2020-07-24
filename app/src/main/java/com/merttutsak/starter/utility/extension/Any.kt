@@ -74,3 +74,7 @@ fun <T> Any?.castOrNull(): T? {
     }
 }
 
+fun Any?.tag(): String {
+    return this?.javaClass?.simpleName ?: ""
+}
+

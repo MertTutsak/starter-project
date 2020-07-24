@@ -4,8 +4,9 @@ import android.app.Dialog
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import androidx.fragment.app.Fragment
+import com.merttutsak.starter.data.local.preferences.AppSharedPrefHelper
 
-var defaultPrefFileName = AppPreferenceHelper.SHARED_PREF_KEY.CURRENT_LANGUAGE.name
+var defaultPrefFileName = AppSharedPrefHelper.SHARED_PREF_KEY.CURRENT_LANGUAGE.name
 var defaultMode: Int = MODE_PRIVATE
 
 fun Context.setInt(

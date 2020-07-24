@@ -23,7 +23,7 @@ class MainActivity : BaseBottomUpActivity<ActivityMainBinding, MainViewModel>(),
     }
 
     override fun bindView() {
-        viewDataBinding.lifecycleOwner = this
+        super.bindView()
         viewDataBinding.viewModel = viewModel
     }
 }

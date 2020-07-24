@@ -3,8 +3,12 @@ package com.merttutsak.starter.utility.helper
 import android.content.Context
 import android.util.TypedValue
 import androidx.annotation.StyleRes
+import androidx.appcompat.app.AppCompatDelegate
+import com.merttutsak.starter.R
 import com.merttutsak.starter.data.local.preferences.SharedPrefHelper
 import com.merttutsak.starter.ui.common.base.view.activity.BaseActivity
+import com.merttutsak.starter.utility.extension.isFalse
+import com.merttutsak.starter.utility.provider.BusProvider
 import java.io.Serializable
 import javax.inject.Inject
 

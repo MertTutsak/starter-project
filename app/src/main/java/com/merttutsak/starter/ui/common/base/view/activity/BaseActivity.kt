@@ -32,10 +32,13 @@ abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel<*>> :
 
     open fun onCreateActivity(savedInstanceState: Bundle?) {
         viewDataBinding = DataBindingUtil.setContentView(this, layoutId)
-        viewModel.setNav(this)
+        if(!this.javaClass.genericInterfaces.isNullOrEmpty()){
+            viewModel.setNav(this)
+        }
     }
 
     open fun bindView() {
+        tag()
         viewDataBinding.lifecycleOwner = this
     }
 
