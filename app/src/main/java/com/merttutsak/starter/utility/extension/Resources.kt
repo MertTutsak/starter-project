@@ -47,7 +47,7 @@ fun Context.resStrArray(@ArrayRes strArrRes: Int) = this.resources.getStringArra
 
 
 //fragment
-inline fun Fragment.resColor(@ColorRes colorRes: Int, theme: Resources.Theme?) =
+fun Fragment.resColor(@ColorRes colorRes: Int, theme: Resources.Theme?) =
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.resources.getColor(colorRes, null)
@@ -59,12 +59,12 @@ inline fun Fragment.resColor(@ColorRes colorRes: Int, theme: Resources.Theme?) =
         this.resources.getColor(colorRes)
     }
 
-inline fun Fragment.resString(@StringRes stringRes: Int) = this.resources.getString(stringRes)
+fun Fragment.resString(@StringRes stringRes: Int) = this.resources.getString(stringRes)
 
-inline fun Fragment.resString(@StringRes stringRes: Int, vararg formatArgs: Any?) =
+fun Fragment.resString(@StringRes stringRes: Int, vararg formatArgs: Any?) =
     this.resources.getString(stringRes, formatArgs)
 
-inline fun Fragment.resDrawable(@DrawableRes drawableRes: Int) =
+fun Fragment.resDrawable(@DrawableRes drawableRes: Int) =
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.resources.getDrawable(drawableRes, null)!!
@@ -75,19 +75,19 @@ inline fun Fragment.resDrawable(@DrawableRes drawableRes: Int) =
         this.resources.getDrawable(drawableRes)!!
     }
 
-inline fun Fragment.resDimenPx(@DimenRes dimenRes: Int) =
+fun Fragment.resDimenPx(@DimenRes dimenRes: Int) =
     this.resources.getDimensionPixelSize(dimenRes)
 
-inline fun Fragment.resInt(@IntegerRes intRes: Int) = this.resources.getInteger(intRes)
+fun Fragment.resInt(@IntegerRes intRes: Int) = this.resources.getInteger(intRes)
 
-inline fun Fragment.resBoolean(@BoolRes boolRes: Int) = this.resources.getBoolean(boolRes)
+fun Fragment.resBoolean(@BoolRes boolRes: Int) = this.resources.getBoolean(boolRes)
 
-inline fun Fragment.resIntArray(@ArrayRes intArrRes: Int) = this.resources.getIntArray(intArrRes)
+fun Fragment.resIntArray(@ArrayRes intArrRes: Int) = this.resources.getIntArray(intArrRes)
 
-inline fun Fragment.resStrArray(@ArrayRes strArrRes: Int) = this.resources.getStringArray(strArrRes)
+fun Fragment.resStrArray(@ArrayRes strArrRes: Int) = this.resources.getStringArray(strArrRes)
 
 //view
-inline fun View.resColor(@ColorRes colorRes: Int, theme: Resources.Theme?) =
+fun View.resColor(@ColorRes colorRes: Int, theme: Resources.Theme?) =
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.resources.getColor(colorRes, null)
@@ -98,12 +98,12 @@ inline fun View.resColor(@ColorRes colorRes: Int, theme: Resources.Theme?) =
         this.resources.getColor(colorRes)
     }
 
-inline fun View.resString(@StringRes stringRes: Int) = this.resources.getString(stringRes)
+fun View.resString(@StringRes stringRes: Int) = this.resources.getString(stringRes)
 
-inline fun View.resString(@StringRes stringRes: Int, vararg formatArgs: Any?) =
+fun View.resString(@StringRes stringRes: Int, vararg formatArgs: Any?) =
     this.resources.getString(stringRes, formatArgs)
 
-inline fun View.resDrawable(@DrawableRes drawableRes: Int) =
+fun View.resDrawable(@DrawableRes drawableRes: Int) =
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             this.resources.getDrawable(drawableRes, null)!!
@@ -114,12 +114,12 @@ inline fun View.resDrawable(@DrawableRes drawableRes: Int) =
         this.resources.getDrawable(drawableRes)!!
     }
 
-inline fun View.resDimenPx(@DimenRes dimenRes: Int) = this.resources.getDimensionPixelSize(dimenRes)
+fun View.resDimenPx(@DimenRes dimenRes: Int) = this.resources.getDimensionPixelSize(dimenRes)
 
-inline fun View.resInt(@IntegerRes intRes: Int) = this.resources.getInteger(intRes)
+fun View.resInt(@IntegerRes intRes: Int) = this.resources.getInteger(intRes)
 
-inline fun View.resBoolean(@BoolRes boolRes: Int) = this.resources.getBoolean(boolRes)
+fun View.resBoolean(@BoolRes boolRes: Int) = this.resources.getBoolean(boolRes)
 
-inline fun View.resIntArray(@ArrayRes intArrRes: Int) = this.resources.getIntArray(intArrRes)
+fun View.resIntArray(@ArrayRes intArrRes: Int) = this.resources.getIntArray(intArrRes)
 
-inline fun View.resStrArray(@ArrayRes strArrRes: Int) = this.resources.getStringArray(strArrRes)
+fun View.resStrArray(@ArrayRes strArrRes: Int) = this.resources.getStringArray(strArrRes)

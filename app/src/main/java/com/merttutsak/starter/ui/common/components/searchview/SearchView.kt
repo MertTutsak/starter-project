@@ -71,7 +71,7 @@ class SearchView : RelativeLayout {
 
                 hintText = attributes.getString(
                     styleable.CustomSearchView_hintText
-                )!!
+                )?:""
             } catch (e: RuntimeException) {
                 e.message?.let { Logger.e(it) }
             }

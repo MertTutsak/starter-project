@@ -10,6 +10,6 @@ fun Context.loadJSONFromAsset(jsonFileName: String): String {
         val buffer = ByteArray(it.available())
         it.read(buffer)
         it.close()
-        return String(buffer, Charset.forName("UTF-8"))
+        return String(buffer, Charset.forName("UTF-8"))?:""
     }
 }

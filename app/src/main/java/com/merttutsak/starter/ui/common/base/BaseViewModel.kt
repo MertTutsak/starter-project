@@ -2,7 +2,7 @@ package com.merttutsak.starter.ui.common.base
 
 import androidx.lifecycle.ViewModel
 import com.merttutsak.starter.data.manager.DataManagerImp
-import com.merttutsak.starter.data.remote.model.response.BaseResponse
+import com.merttutsak.starter.data.remote.model.base.BaseResponse
 import com.merttutsak.starter.utility.delegate.OnceCreatableDelegate
 import com.merttutsak.starter.utility.provider.AppLanguageProvider
 import io.reactivex.disposables.CompositeDisposable

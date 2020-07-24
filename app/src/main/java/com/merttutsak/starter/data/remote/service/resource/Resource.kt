@@ -1,7 +1,7 @@
 package com.merttutsak.starter.data.remote.service.resource
 
 import androidx.annotation.NonNull
-import com.merttutsak.starter.data.remote.model.response.BaseResponse
+import com.merttutsak.starter.data.remote.model.base.BaseResponse
 import com.merttutsak.starter.data.remote.service.error.ApiError
 
 class Resource<T> constructor(

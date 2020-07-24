@@ -122,6 +122,7 @@ android {
         /*google*/
         implementation deps.google.material
         implementation deps.google.gson
+        implementation deps.google.zxing
         /*google*/
 
         /*dagger*/

@@ -5,8 +5,6 @@ import com.merttutsak.starter.data.remote.model.base.FriendlyMessage
 import com.merttutsak.starter.data.remote.service.error.ApiError
 
 interface BaseNavigator {
-    fun getContext():Context
-
     fun showLoading()
     fun hideLoading()
 

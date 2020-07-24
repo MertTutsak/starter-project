@@ -58,6 +58,14 @@ fun Activity?.initStatusBar(): Int {
     return -1
 }
 
+fun Activity?.changeStatusBarColor(colorId: Int) {
+    this?.let {
+        if (Build.VERSION.SDK_INT >= 21) {
+            window.statusBarColor = ContextCompat.getColor(it, colorId)
+        }
+    }
+}
+
 fun Activity?.setWindowFlag(on: Boolean) {
     this?.let {
         val win = it.window
@@ -144,17 +152,11 @@ fun Context.getNavigationbarHeight(): Int{
     return result
 }
 
-fun Context?.loadJSONFromAsset(jsonFileName: String): String? {
-    this.notNull {
-        val manager = it.assets
-        val `is` = manager.open(jsonFileName)
-
-        val size = `is`.available()
-        val buffer = ByteArray(size)
-        `is`.read(buffer)
-        `is`.close()
-        return String(buffer, Charsets.UTF_8)
+fun Context.getStatusBarHeight(): Int {
+    var result = 0
+    val resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+    if (resourceId > 0) {
+        result = resources.getDimensionPixelSize(resourceId);
     }
-
-    return null
+    return result;
 }

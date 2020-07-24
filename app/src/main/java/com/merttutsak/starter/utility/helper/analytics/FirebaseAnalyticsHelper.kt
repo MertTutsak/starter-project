@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
+import androidx.databinding.ObservableInt
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.merttutsak.starter.ui.common.base.view.activity.BaseActivity
 import com.merttutsak.starter.utility.helper.analytics.AnalyticsActions.UPROP_USER_REGISTERED

@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="bottomsheet_dialog_text">Example Bottomsheet Dialog yazısı</string>
-    <string name="bottomsheet_button_text">Bottomsheet Dialog göster</string>
-    <string name="progress_button_text">Progress Dialog Göster</string>
-    <string name="language_button_text">Dil Değiştir</string>
-    <string name="theme_button_text">Tema Değiştir</string>
+    <string name="app_name" translatable="false">starter_project</string>
+
+    <!-- NON Translatable-->
+    <string name="default_notification_channel_id" translatable="false">test</string>
+    <string name="leak_canary_display_activity_label" translatable="false">leaks-starter-project</string>
+    <!-- NON Translatable-->
+
+    <string name="progress_button_text"> Show Progress Dialog </string>
+    <string name="language_button_text"> Dil Degistirme </string>
+    <string name="theme_button_text"> Tema Degistir </string>
+
+    <!--Bottom Sheet-->
+    \<string name="bottomsheet_dialog_text"> Example Bottomsheet Dialog </string>
+    <string name="bottomsheet_button_text"> Show Bottomsheet Dialog </string>
+    <!--Bottom Sheet-->
+
+    <!--Navigation Drawer-->
+    <string name="navigation_drawer_open">Acik</string>
+    <string name="navigation_drawer_close">Kapali</string>
+    <!--Navigation Drawer-->
+
+    <!-- Intent -->
+    <string name="intent_share_title">Paylas</string>
+    <!-- Intent -->
 </resources>

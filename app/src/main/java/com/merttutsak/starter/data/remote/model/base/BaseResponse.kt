@@ -1,4 +1,4 @@
-package com.merttutsak.starter.data.remote.model.response
+package com.merttutsak.starter.data.remote.model.base
 
 import android.os.Parcelable
 import com.google.gson.annotations.Expose

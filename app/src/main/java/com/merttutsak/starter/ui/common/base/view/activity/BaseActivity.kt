@@ -10,23 +10,22 @@ import com.merttutsak.starter.data.remote.service.error.ApiError
 import com.merttutsak.starter.ui.common.base.BaseNavigator
 import com.merttutsak.starter.ui.common.base.BaseViewModel
 import com.merttutsak.starter.ui.common.components.progressdialog.LottieProgressDialog
+import com.merttutsak.starter.utility.delegate.AutoClearedActivityValue
 import com.merttutsak.starter.utility.extension.*
 import com.merttutsak.starter.utility.helper.ThemeHelper
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
 abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel<*>> :
-    DaggerAppCompatActivity(), BaseNavigator{
+    DaggerAppCompatActivity(), BaseNavigator {
 
-    abstract val layoutId: Int
+    open val layoutId: Int by AutoClearedActivityValue()
 
-    abstract var viewDataBinding: VB
+    open var viewDataBinding: VB by AutoClearedActivityValue()
 
-    abstract var viewModel: VM
+    open var viewModel: VM by AutoClearedActivityValue()
 
     private var progressDialog: LottieProgressDialog? = null
-
-    override fun getContext(): Context = this
 
     @Inject
     lateinit var themeHelper: ThemeHelper
@@ -50,9 +49,8 @@ abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel<*>> :
         themeHelper.init(this)
         onCreateActivity(savedInstanceState)
 
-        setToolbar()
         bindView()
-
+        setToolbar()
     }
 
     override fun hideLoading() {

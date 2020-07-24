@@ -1,7 +1,12 @@
 package com.merttutsak.starter.utility.extension
 
-import android.provider.ContactsContract
-import android.util.Patterns
+import android.graphics.Typeface
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.AbsoluteSizeSpan
+import android.text.style.ClickableSpan
+import android.text.style.ForegroundColorSpan
+import com.merttutsak.starter.utility.helper.typeFace.CustomTypefaceSpan
 import java.util.*
 import java.util.regex.Pattern
 
@@ -16,13 +21,7 @@ import java.util.regex.Pattern
  * text = ""
  * text?.isNullOrEmpty() -> true
 */
-fun String?.isNullOrEmpty(listener: ReturnListener): Boolean {
-    if (!this.isNull() && this!!.isNotEmpty()) {
-        listener.onFalse()
-    } else {
-        listener.onTrue()
-    }
-
+fun String?.isNullOrEmpty(): Boolean {
     return (this == null || this == "")
 }
 
@@ -216,4 +215,66 @@ fun String.isValid(RegExp: String): Boolean {
  */
 fun String.isValid(pattern: Pattern): Boolean {
     return (pattern.matcher(this).matches())
+}
+
+fun String?.setCustomTypeFace(
+    typeface: Typeface,
+    spanClickableSpan: ClickableSpan, color: Int
+): SpannableString {
+
+    var ss = SpannableString(this)
+    ss.setSpan(
+        spanClickableSpan, 0, this?.length ?: 0,
+        0
+    )
+    ss.setSpan(ForegroundColorSpan(color), 0, this?.length ?: 0, 0)
+    ss.setSpan(
+        AbsoluteSizeSpan(15, true),
+        0,
+        this?.length ?: 0,
+        0
+    )
+    ss.setSpan(
+        CustomTypefaceSpan("", typeface),
+        0,
+        this?.length ?: 0,
+        0
+    )
+    return ss
+}
+
+fun String?.setCustomTypeFace(typeface: Typeface): SpannableString {
+
+    var ss = SpannableString(this)
+    ss.setSpan(
+        AbsoluteSizeSpan(15, true),
+        0,
+        this?.length ?: 0,
+        0
+    )
+    ss.setSpan(
+        CustomTypefaceSpan("", typeface),
+        0,
+        this?.length ?: 0,
+        0
+    )
+    return ss
+}
+
+fun String?.setCustomTypeFaceSize(typeface: Typeface, fontSize: Int): SpannableString {
+
+    var ss = SpannableString(this)
+    ss.setSpan(
+        AbsoluteSizeSpan(fontSize, true),
+        0,
+        this?.length ?: 0,
+        Spanned.SPAN_INCLUSIVE_INCLUSIVE
+    )
+    ss.setSpan(
+        CustomTypefaceSpan("", typeface),
+        0,
+        this?.length ?: 0,
+        Spanned.SPAN_INCLUSIVE_EXCLUSIVE
+    )
+    return ss
 }

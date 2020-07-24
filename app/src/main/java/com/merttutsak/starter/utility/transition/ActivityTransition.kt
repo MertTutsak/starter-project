@@ -84,10 +84,8 @@ class ActivityTransition(builder: Builder) {
     private fun clearTaskIfNeeded() {
         if (clearTask) {
             Handler().postDelayed({
-                try {
+                kotlin.runCatching {
                     mActivity?.finishAffinity()
-                } catch (e: Exception) {
-                    e.printStackTrace()
                 }
             }, 270)
         }

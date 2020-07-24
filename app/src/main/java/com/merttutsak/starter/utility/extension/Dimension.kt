@@ -1,6 +1,7 @@
 package com.merttutsak.starter.utility.extension
 
 import android.content.Context
+import android.content.res.Resources
 import android.view.View
 import androidx.annotation.DimenRes
 import androidx.fragment.app.Fragment
@@ -35,21 +36,44 @@ fun Context.px2sp(px: Int): Float = px.toFloat() / resources.displayMetrics.scal
 fun Context.dimen(@DimenRes resource: Int): Int = resources.getDimensionPixelSize(resource)
 
 //the same for the views
-inline fun View.dip(value: Int): Int = context.dip(value)
+fun View.dip(value: Int): Int = context.dip(value)
 
-inline fun View.dip(value: Float): Int = context.dip(value)
-inline fun View.sp(value: Int): Int = context.sp(value)
-inline fun View.sp(value: Float): Int = context.sp(value)
-inline fun View.px2dip(px: Int): Float = context.px2dip(px)
-inline fun View.px2sp(px: Int): Float = context.px2sp(px)
-inline fun View.dimen(@DimenRes resource: Int): Int = context.dimen(resource)
+fun View.dip(value: Float): Int = context.dip(value)
+fun View.sp(value: Int): Int = context.sp(value)
+fun View.sp(value: Float): Int = context.sp(value)
+fun View.px2dip(px: Int): Float = context.px2dip(px)
+fun View.px2sp(px: Int): Float = context.px2sp(px)
+fun View.dimen(@DimenRes resource: Int): Int = context.dimen(resource)
 
 //the same for Fragments
-inline fun Fragment.dip(value: Int): Int = activity?.dip(value)!!
+fun Fragment.dip(value: Int): Int = activity?.dip(value)!!
 
-inline fun Fragment.dip(value: Float): Int = activity?.dip(value)!!
-inline fun Fragment.sp(value: Int): Int = activity?.sp(value)!!
-inline fun Fragment.sp(value: Float): Int = activity?.sp(value)!!
-inline fun Fragment.px2dip(px: Int): Float = activity?.px2dip(px)!!
-inline fun Fragment.px2sp(px: Int): Float = activity?.px2sp(px)!!
-inline fun Fragment.dimen(@DimenRes resource: Int): Int = activity?.dimen(resource)!!
+fun Fragment.dip(value: Float): Int = activity?.dip(value)!!
+fun Fragment.sp(value: Int): Int = activity?.sp(value)!!
+fun Fragment.sp(value: Float): Int = activity?.sp(value)!!
+fun Fragment.px2dip(px: Int): Float = activity?.px2dip(px)!!
+fun Fragment.px2sp(px: Int): Float = activity?.px2sp(px)!!
+fun Fragment.dimen(@DimenRes resource: Int): Int = activity?.dimen(resource)!!
+
+val Float.dp: Float                 // [xxhdpi](360 -> 1080)
+    get() = android.util.TypedValue.applyDimension(
+        android.util.TypedValue.COMPLEX_UNIT_DIP, this, Resources.getSystem().displayMetrics)
+
+val Float.px: Int
+    get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+val Int.dp: Int
+    get() = android.util.TypedValue.applyDimension(
+        android.util.TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), Resources.getSystem().displayMetrics).toInt()
+
+val Int.px: Int
+    get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+
+val Float.sp: Float                 // [xxhdpi](360 -> 1080)
+    get() = android.util.TypedValue.applyDimension(
+        android.util.TypedValue.COMPLEX_UNIT_SP, this, Resources.getSystem().displayMetrics)
+
+val Int.sp: Int
+    get() = android.util.TypedValue.applyDimension(
+        android.util.TypedValue.COMPLEX_UNIT_SP, this.toFloat(), Resources.getSystem().displayMetrics).toInt()

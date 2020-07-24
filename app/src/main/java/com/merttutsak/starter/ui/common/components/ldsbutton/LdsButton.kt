@@ -36,10 +36,10 @@ class LdsButton : AppCompatButton {
     fun setStatus(state: State) {
         if (state == State.ENABLE) {
             isClickable = true
-            background = ContextCompat.getDrawable(context, R.drawable.lds_button_enable)
+            background = ContextCompat.getDrawable(context, R.drawable.button_enable)
         } else {
             isClickable = false
-            background = ContextCompat.getDrawable(context, R.drawable.lds_button_disable)
+            background = ContextCompat.getDrawable(context, R.drawable.button_disable)
         }
     }
 }

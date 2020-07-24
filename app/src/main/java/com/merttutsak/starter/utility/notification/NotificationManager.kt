@@ -19,7 +19,9 @@ import androidx.core.app.NotificationCompat
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.messaging.RemoteMessage
+import com.merttutsak.starter.R
 import com.merttutsak.starter.ui.landing.LandingPageActivity
+import com.merttutsak.starter.utility.extension.isNotNull
 import com.orhanobut.logger.Logger
 import java.io.IOException
 import java.io.InputStream
@@ -27,14 +29,13 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.*
 
-
 class NotificationManager {
-    public val ARGS_PUSHTYPE = "pushType"
-    public val EXTRA_NOTIFICATION_ID = "EXTRA_NOTIFICATION_ID"
+    val ARGS_PUSHTYPE = "pushType"
+    val EXTRA_NOTIFICATION_ID = "EXTRA_NOTIFICATION_ID"
 
-    public val PUSH_TYPE_INTERACTIVE = "interactive"
-    public val PUSH_TYPE_RESPONSIVE = "responsive"
-    public val PUSH_TYPE_GENERAL = "general"
+    val PUSH_TYPE_INTERACTIVE = "interactive"
+    val PUSH_TYPE_RESPONSIVE = "responsive"
+    val PUSH_TYPE_GENERAL = "general"
 
     fun handleNotification(remoteMessage: RemoteMessage?, context: Context) {
         var title: String? = ""
@@ -46,33 +47,33 @@ class NotificationManager {
         var button2Url: String? = ""
         var link: String? = ""
         var bigImageUrl: String? = ""
-        if (remoteMessage != null) {
-            if (remoteMessage.data != null && remoteMessage.data["title"] != null) {
-                title = remoteMessage.data["title"]
+        if (remoteMessage.isNotNull()) {
+            if (remoteMessage?.data?.get("title").isNotNull()) {
+                title = remoteMessage?.data?.get("title")
             }
-            if (remoteMessage.data != null && remoteMessage.data["message"] != null) {
-                body = remoteMessage.data["message"]
+            if (remoteMessage?.data?.get("message").isNotNull()) {
+                body = remoteMessage?.data?.get("message")
             }
-            if (remoteMessage.data != null && remoteMessage.data["type"] != null) {
-                tyype = remoteMessage.data["type"]
+            if (remoteMessage?.data?.get("type").isNotNull()) {
+                tyype = remoteMessage?.data?.get("type")
             }
-            if (remoteMessage.data != null && remoteMessage.data["button_1"] != null) {
-                button1 = remoteMessage.data["button_1"]
+            if (remoteMessage?.data?.get("button_1").isNotNull()) {
+                button1 = remoteMessage?.data?.get("button_1")
             }
-            if (remoteMessage.data != null && remoteMessage.data["button_1_url"] != null) {
-                button1Url = remoteMessage.data["button_1_url"]
+            if (remoteMessage?.data?.get("button_1_url").isNotNull()) {
+                button1Url = remoteMessage?.data?.get("button_1_url")
             }
-            if (remoteMessage.data != null && remoteMessage.data["button_2"] != null) {
-                button2 = remoteMessage.data["button_2"]
+            if (remoteMessage?.data?.get("button_2").isNotNull()) {
+                button2 = remoteMessage?.data?.get("button_2")
             }
-            if (remoteMessage.data != null && remoteMessage.data["button_2_url"] != null) {
-                button2Url = remoteMessage.data["button_2_url"]
+            if (remoteMessage?.data?.get("button_2_url").isNotNull()) {
+                button2Url = remoteMessage?.data?.get("button_2_url")
             }
-            if (remoteMessage.data != null && remoteMessage.data["ins_dl_external"] != null || remoteMessage.data != null && remoteMessage.data["ins_dl_internal"] != null) {
-                link = remoteMessage.data["ins_dl_external"]
+            if (remoteMessage?.data?.get("ins_dl_external").isNotNull()) {
+                link = remoteMessage?.data?.get("ins_dl_external")
             }
-            if (remoteMessage.data != null && remoteMessage.data["image_url"] != null) {
-                bigImageUrl = remoteMessage.data["image_url"]
+            if (remoteMessage?.data?.get("image_url").isNotNull()) {
+                bigImageUrl = remoteMessage?.data?.get("image_url")
             }
             val lotusNotification = BaseNotification(
                 body,
@@ -100,16 +101,16 @@ class NotificationManager {
             .setWhen(0)
             .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
 
-        if (lotusNotification.title != null) {
+        if (lotusNotification.title.isNotNull()) {
             mBuilder.setContentTitle(lotusNotification.title)
         }
-        if (lotusNotification.body != null) {
+        if (lotusNotification.body.isNotNull()) {
             mBuilder.setContentText(lotusNotification.body)
         }
-        if (lotusNotification.type != null && lotusNotification.type == PUSH_TYPE_INTERACTIVE) {
-            if (lotusNotification.button1 != null) {
+        if (lotusNotification.type.isNotNull() && lotusNotification.type == PUSH_TYPE_INTERACTIVE) {
+            if (lotusNotification.button1.isNotNull()) {
                 val intent = Intent(context, LandingPageActivity::class.java)
-                if (lotusNotification.button1Url != null) {
+                if (lotusNotification.button1Url.isNotNull()) {
                     intent.data = Uri.parse(lotusNotification.button1Url)
                 }
                 intent.putExtra(ARGS_PUSHTYPE, lotusNotification.type)
@@ -119,9 +120,9 @@ class NotificationManager {
                     PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
                 mBuilder.addAction(0, lotusNotification.button1, button1Intent)
             }
-            if (lotusNotification.button2 != null) {
+            if (lotusNotification.button2.isNotNull()) {
                 val intent = Intent(context, LandingPageActivity::class.java)
-                if (lotusNotification.button2Url != null) {
+                if (lotusNotification.button2Url.isNotNull()) {
                     intent.data = Uri.parse(lotusNotification.button2Url)
                 }
                 intent.putExtra(ARGS_PUSHTYPE, lotusNotification.type)
@@ -132,7 +133,7 @@ class NotificationManager {
                 mBuilder.addAction(0, lotusNotification.button2, button2Intent)
             }
         }
-        if (lotusNotification.link != null) {
+        if (lotusNotification.link.isNotNull()) {
             val intent = Intent(context, LandingPageActivity::class.java)
             intent.putExtra(ARGS_PUSHTYPE, lotusNotification.type)
             intent.putExtra(EXTRA_NOTIFICATION_ID, notificationId)
@@ -146,14 +147,14 @@ class NotificationManager {
         val notification = mBuilder.build()
         val notificationManager = NotificationManagerCompat.from(context)
         notificationManager.notify(notificationId, notification)
-        if (lotusNotification.bigImageUrl != null && lotusNotification.bigImageUrl.isNotEmpty()) {
+        if (lotusNotification.bigImageUrl.isNotNull() && lotusNotification.bigImageUrl.isNullOrEmpty()) {
             var title = ""
             var desc = ""
-            if (lotusNotification.title != null) {
-                title = lotusNotification.title
+            if (lotusNotification.title.isNotNull()) {
+                title = lotusNotification.title ?: ""
             }
-            if (lotusNotification.body != null) {
-                desc = lotusNotification.body
+            if (lotusNotification.body.isNotNull()) {
+                desc = lotusNotification.body ?: ""
             }
             BigImageLoader(
                 mBuilder,
@@ -187,7 +188,7 @@ class NotificationManager {
             service.createNotificationChannel(chan)
             return channelId
         }
-        return "test"// context.resources.getString(R.string.default_notification_channel_id)
+        return context.resources.getString(R.string.default_notification_channel_id)
     }
 
     private class BigImageLoader(
@@ -216,26 +217,27 @@ class NotificationManager {
 
         override fun onPostExecute(bitmap: Bitmap?) {
             super.onPostExecute(bitmap)
-            if (bitmap != null && builder != null) {
-                builder.setStyle(
+            if (bitmap.isNotNull() && builder.isNotNull()) {
+                builder?.setStyle(
                     NotificationCompat.BigPictureStyle()
-                        .bigPicture(bitmap).bigLargeIcon(null).setBigContentTitle(title).setSummaryText(
+                        .bigPicture(bitmap).bigLargeIcon(null).setBigContentTitle(title)
+                        .setSummaryText(
                             description
                         )
                 )
-                notificationManager.notify(notificationId, builder.build())
+                notificationManager.notify(notificationId, builder!!.build())
             }
         }
     }
 
-    fun subscribeToTopic(topic: String) {
+    fun subscribeToTopic(topic: String, errorFunc: () -> Unit) {
         FirebaseMessaging.getInstance().subscribeToTopic(topic)
             .addOnCompleteListener { task ->
                 if (!task.isSuccessful) {
-
+                    errorFunc()
                 }
             }.addOnCanceledListener {
-
+                errorFunc()
             }
     }
 

@@ -46,13 +46,11 @@ class LoggingInterceptor : Interceptor {
         }
 
         var rawJson: String? = ""
-        try {
+        kotlin.runCatching {
             rawJson = response.body()!!.string()
             if (rawJson != null) {
                 Logger.json(rawJson)
             }
-        } catch (e: Exception) {
-            Logger.e("Null response body")
         }
 
         return response.newBuilder()

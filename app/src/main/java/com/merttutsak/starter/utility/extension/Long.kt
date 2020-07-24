@@ -10,4 +10,4 @@ import java.util.*
  *
  * if it is null, return null
  */
-fun Long?.toDateTime(): Date? = if(this.isNull()) null else Date(this!!)
+fun Long?.toDate(): Date? = if(this.isNull()) null else Date(this!!)

@@ -3,7 +3,7 @@ package com.merttutsak.starter.utility.notification
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.merttutsak.starter.data.remote.model.response.BaseResponse
+import com.merttutsak.starter.data.remote.model.base.BaseResponse
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

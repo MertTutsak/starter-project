@@ -8,6 +8,7 @@ versions.multidex = "2.0.1"
 versions.appcompat = "1.1.0"
 versions.constraintlayout = "2.0.0-alpha5"
 versions.material = "1.2.0-alpha03"
+versions.zxing = "3.3.0"
 versions.core_ktx = "1.1.0"
 versions.junit = "4.12"
 versions.test_runner = "1.1.2-alpha02"
@@ -82,6 +83,7 @@ deps.google_play_services = google_play_services
 def google = [:]
 google.gson = "com.google.code.gson:gson:$versions.gson"
 google.material = "com.google.android.material:material:$versions.material"
+google.zxing = "com.google.zxing:core:$versions.zxing"
 deps.google = google
 
 def dagger = [:]

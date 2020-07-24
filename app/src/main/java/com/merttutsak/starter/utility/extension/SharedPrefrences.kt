@@ -122,79 +122,79 @@ fun Context.getStringSet(
 }
 
 //fragment
-inline fun Fragment.setInt(intValue: Int, tag: String) = this.context?.setInt(intValue, tag)
+fun Fragment.setInt(intValue: Int, tag: String) = this.context?.setInt(intValue, tag)
 
-inline fun Fragment.getInt(
+fun Fragment.getInt(
     tag: String, default: Int = 0,
     prefFileName: String = defaultPrefFileName,
     mode: Int = defaultMode
 ): Int = this.context?.getInt(tag, default)!!
 
-inline fun Fragment.setBool(boolValue: Boolean, tag: String) =
+fun Fragment.setBool(boolValue: Boolean, tag: String) =
     this.context?.setBool(boolValue, tag)
 
-inline fun Fragment.getBool(tag: String, default: Boolean = false) =
+fun Fragment.getBool(tag: String, default: Boolean = false) =
     this.context?.getBool(tag, default)
 
-inline fun Fragment.setString(string: String?, tag: String) =
+fun Fragment.setString(string: String?, tag: String) =
     this.context?.setString(string, tag)
 
-inline fun Fragment.getString(tag: String, default: String? = null) =
+fun Fragment.getString(tag: String, default: String? = null) =
     this.context?.getString(tag, default)
 
-inline fun Fragment.setLong(longValue: Long, tag: String) =
+fun Fragment.setLong(longValue: Long, tag: String) =
     this.context?.setLong(longValue, tag)
 
-inline fun Fragment.getLong(tag: String, default: Long = 0L) = this.context?.getLong(tag, default)
+fun Fragment.getLong(tag: String, default: Long = 0L) = this.context?.getLong(tag, default)
 
-inline fun Fragment.setFloat(floatValue: Float, tag: String) =
+fun Fragment.setFloat(floatValue: Float, tag: String) =
     this.context?.setFloat(floatValue, tag)
 
-inline fun Fragment.getFloat(tag: String, default: Float = 0F) =
+fun Fragment.getFloat(tag: String, default: Float = 0F) =
     this.context?.getFloat(tag, default)
 
-inline fun Fragment.setStringSet(strSet: Set<String?>?, tag: String) =
+fun Fragment.setStringSet(strSet: Set<String?>?, tag: String) =
     this.context?.setStringSet(strSet, tag)
 
-inline fun Fragment.getStringSet(
+fun Fragment.getStringSet(
     tag: String,
     prefFileName: String = defaultPrefFileName,
     mode: Int = defaultMode
 ): Set<String?>? = this.context?.getStringSet(tag)
 
 //dialog
-inline fun Dialog.setInt(intValue: Int, tag: String) = this.context.setInt(intValue, tag)
+fun Dialog.setInt(intValue: Int, tag: String) = this.context.setInt(intValue, tag)
 
-inline fun Dialog.getInt(
+fun Dialog.getInt(
     tag: String, default: Int = 0,
     prefFileName: String = defaultPrefFileName,
     mode: Int = defaultMode
 ): Int = this.context.getInt(tag, default)
 
-inline fun Dialog.setBool(boolValue: Boolean, tag: String) =
+fun Dialog.setBool(boolValue: Boolean, tag: String) =
     this.context.setBool(boolValue, tag)
 
-inline fun Dialog.getBool(tag: String, default: Boolean = false) =
+fun Dialog.getBool(tag: String, default: Boolean = false) =
     this.context.getBool(tag, default)
 
-inline fun Dialog.setString(string: String?, tag: String) = this.context.setString(string, tag)
+fun Dialog.setString(string: String?, tag: String) = this.context.setString(string, tag)
 
-inline fun Dialog.getString(tag: String, default: String? = null) =
+fun Dialog.getString(tag: String, default: String? = null) =
     this.context.getString(tag, default)
 
-inline fun Dialog.setLong(longValue: Long, tag: String) = this.context.setLong(longValue, tag)
+fun Dialog.setLong(longValue: Long, tag: String) = this.context.setLong(longValue, tag)
 
-inline fun Dialog.getLong(tag: String, default: Long = 0L) = this.context.getLong(tag, default)
+fun Dialog.getLong(tag: String, default: Long = 0L) = this.context.getLong(tag, default)
 
-inline fun Dialog.setFloat(floatValue: Float, tag: String) =
+fun Dialog.setFloat(floatValue: Float, tag: String) =
     this.context.setFloat(floatValue, tag)
 
-inline fun Dialog.getFloat(tag: String, default: Float = 0F) = this.context.getFloat(tag, default)
+fun Dialog.getFloat(tag: String, default: Float = 0F) = this.context.getFloat(tag, default)
 
-inline fun Dialog.setStringSet(strSet: Set<String?>?, tag: String) =
+fun Dialog.setStringSet(strSet: Set<String?>?, tag: String) =
     this.context.setStringSet(strSet, tag)
 
-inline fun Dialog.getStringSet(
+fun Dialog.getStringSet(
     tag: String,
     prefFileName: String = defaultPrefFileName,
     mode: Int = defaultMode

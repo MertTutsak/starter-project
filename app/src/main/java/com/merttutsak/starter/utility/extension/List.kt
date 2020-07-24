@@ -1,30 +1,5 @@
 package com.merttutsak.starter.utility.extension
 
-import android.widget.EditText
-import java.util.ArrayList
-
-/**Examples**/
-/**
- *  var list?:List = null
- *
- *  list.isNullOrEmpty() -> true
- *  list = List<T>()
- *
- *  list.isNullOrEmpty() -> true
- *
- *  list = list.plus(T())
- *  list.isNullOrEmpty() -> false
- */
-fun <T> List<T>?.isNullOrEmpty(listener: ReturnListener): Boolean {
-    if (!this.isNull() && this!!.isNotEmpty()) {
-        listener.onFalse()
-    } else {
-        listener.onTrue()
-    }
-
-    return this.isNullOrEmpty()
-}
-
 /**Examples**/
 /**
  * [1,42,12,54,64,12,2] -> list
@@ -156,7 +131,7 @@ fun List<Int>?.divide(): Int {
  *
  * both parameters should be created from the same class.
  */
-inline fun <T> List<T>.swap(o1: T, o2: T): List<T> {
+fun <T> List<T>.swap(o1: T, o2: T): List<T> {
     var list = List<T>(this.size) {
         return listOf(it as T)
     }

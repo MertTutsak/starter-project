@@ -5,6 +5,6 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="statusbar">#33000000</color>
-    <color name="ldsbtnenable">#00BCD4</color>
-    <color name="ldsbtndisable">#7A00BCD4</color>
+    <color name="btnenable">#00BCD4</color>
+    <color name="btndisable">#7A00BCD4</color>
 </resources>

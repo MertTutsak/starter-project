@@ -23,12 +23,7 @@ class MainActivity : BaseBottomUpActivity<ActivityMainBinding, MainViewModel>(),
     }
 
     override fun bindView() {
-        viewModel.homeResponseLiveData.observeNonNull(this) {
-            viewDataBinding.viewModel = viewModel
-        }
-    }
-
-    override fun deneme() {
-        //TODO deneme
+        viewDataBinding.lifecycleOwner = this
+        viewDataBinding.viewModel = viewModel
     }
 }

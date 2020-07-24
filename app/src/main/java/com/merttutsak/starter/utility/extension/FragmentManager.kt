@@ -41,3 +41,10 @@ internal fun FragmentManager.addFragment(
         .commit()
 }
 
+internal fun FragmentManager.currentFragment(
+    containerViewId: Int
+): Fragment? {
+    return this.findFragmentById(containerViewId)
+}
+
+

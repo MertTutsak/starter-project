@@ -5,7 +5,6 @@ import android.content.Context
 import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
 import com.orhanobut.logger.Logger
 
 /**Examples**/
@@ -15,17 +14,21 @@ import com.orhanobut.logger.Logger
  *
  * if context is null, catch runs.
  */
-fun Context?.hideKeyboard() {
-    try {
+fun Context?.hideKeyboard(view: View? = null) {
+    kotlin.runCatching {
         val inputMethodManager =
-            this!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(
-            (this as Activity).currentFocus!!.windowToken,
-            0
-        )
-    } catch (e: Exception) {
-        if (e.message != null)
-            Logger.d("KeyboardError", e.message)
+            this?.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager?
+        if (view.isNull() && this is Activity) {
+            inputMethodManager?.hideSoftInputFromWindow(
+                this.currentFocus?.windowToken,
+                0
+            )
+        } else {
+            inputMethodManager?.hideSoftInputFromWindow(
+                view?.applicationWindowToken,
+                0
+            )
+        }
     }
 
 }
@@ -37,17 +40,7 @@ fun Context?.hideKeyboard() {
  *
  * if context is null, catch runs.
  */
-fun Context?.hideKeyboard(v: View) {
-    try {
-        val inputMethodManager =
-            this!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
-    } catch (e: Exception) {
-        if (e.message != null)
-            Logger.d("KeyboardError", e.message)
-    }
-
-}
+fun View?.hideKeyboard() = this?.context.hideKeyboard(this)
 
 /**Examples**/
 /**
@@ -56,16 +49,8 @@ fun Context?.hideKeyboard(v: View) {
  *
  * if context is null, catch runs.
  */
-fun Context?.showKeyboard(view: View) {
-    try {
-        val inputMethodManager =
-            this!!.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.showSoftInput(view, InputMethodManager.SHOW_FORCED)
-    } catch (e: Exception) {
-        Logger.d("KeyboardError", e.message)
-    }
 
-}
+fun View?.showKeyboard() = this?.context?.showKeyboard()
 
 /**Examples**/
 /**
@@ -75,23 +60,21 @@ fun Context?.showKeyboard(view: View) {
  * if context is null, catch runs.
  */
 fun Context?.showKeyboard() {
-    try {
+    kotlin.runCatching {
         var imm: InputMethodManager =
             this!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
-    } catch (e: Exception) {
-        Logger.d("KeyboardError", e.message)
+        imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0)
     }
 }
 
-fun Context?.isKeyboardShowing(view: View): Boolean {
+fun View?.isKeyboardShowing(): Boolean {
     return try {
-        val keyboard = this?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        keyboard.hideSoftInputFromWindow(view.windowToken, 0)
+        val keyboard =
+            this?.context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        keyboard.hideSoftInputFromWindow(this.windowToken, 0)
         keyboard.isActive
     } catch (ex: Exception) {
         Log.e("keyboardHide", "cannot hide keyboard", ex)
         false
     }
-
 }

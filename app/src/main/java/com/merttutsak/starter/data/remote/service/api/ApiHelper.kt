@@ -2,7 +2,7 @@ package com.merttutsak.starter.data.remote.service.api
 
 import android.content.Context
 import com.merttutsak.starter.BuildConfig
-import com.merttutsak.starter.data.remote.model.response.HomeResponse
+import com.merttutsak.starter.data.remote.model.response.home.HomeResponse
 import com.readystatesoftware.chuck.ChuckInterceptor
 import io.reactivex.Observable
 import okhttp3.OkHttpClient

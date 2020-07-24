@@ -2,6 +2,7 @@ package com.merttutsak.starter.utility.extension
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.EditText
 import java.util.ArrayList
 
@@ -84,4 +85,14 @@ inline fun EditText?.beforeTextChanged(crossinline beforeTextChanged: (CharSeque
         override fun afterTextChanged(editable: Editable?) {
         }
     })
+}
+
+fun View.focus() {
+    if (this is EditText) {
+        this.setSelection(this.text.length)
+    }else {
+        if (!this.hasFocus()) {
+            this.requestFocus()
+        }
+    }
 }

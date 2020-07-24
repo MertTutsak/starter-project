@@ -4,7 +4,6 @@ import com.merttutsak.starter.app.App
 import com.merttutsak.starter.di.builder.ActivityBuilder
 import com.merttutsak.starter.di.builder.FragmentBuilder
 import com.merttutsak.starter.di.module.AppModule
-import com.merttutsak.starter.utility.module.AppUtilModule
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
@@ -16,7 +15,6 @@ import javax.inject.Singleton
     modules = [
         AndroidInjectionModule::class,
         AppModule::class,
-        AppUtilModule::class,
         ActivityBuilder::class,
         FragmentBuilder::class
     ]

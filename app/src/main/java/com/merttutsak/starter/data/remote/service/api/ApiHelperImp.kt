@@ -1,6 +1,6 @@
 package com.merttutsak.starter.data.remote.service.api
 
-import com.merttutsak.starter.data.remote.model.response.HomeResponse
+import com.merttutsak.starter.data.remote.model.response.home.HomeResponse
 import com.merttutsak.starter.data.remote.service.resource.Resource
 import com.merttutsak.starter.utility.provider.SchedulerProvider
 import io.reactivex.Observable
