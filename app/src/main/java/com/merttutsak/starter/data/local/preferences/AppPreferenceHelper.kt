@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class AppPreferenceHelper @Inject constructor(
     context: Context,
-    @PreferenceInfo private val prefFileName: String
+    private val prefFileName: String
 ) : PreferenceHelper {
 
     companion object {
@@ -27,7 +27,8 @@ class AppPreferenceHelper @Inject constructor(
     override fun setAppLanguage(language: String?) =
         mPrefs.edit { putString(PREF_KEY_CURRENT_LANGUAGE, language) }
 
-    override fun getAppLanguage(): String? = mPrefs.getString(PREF_KEY_CURRENT_LANGUAGE, AppLanguageProvider.DEFAULT_LANG.code())
+    override fun getAppLanguage(): String? =
+        mPrefs.getString(PREF_KEY_CURRENT_LANGUAGE, AppLanguageProvider.DEFAULT_LANG.code())
 
     override fun getAppTheme(): Int = mPrefs.getInt(PREF_KEY_CURRENT_THEME, 0)
 
