@@ -9,7 +9,7 @@ import okhttp3.ResponseBody
 import java.io.IOException
 import java.net.ProtocolException
 
-class LoggingInterceptor : Interceptor {
+class HttpLoggingInterceptor : Interceptor {
 
     @Throws(IOException::class)
     override fun intercept(chain: Interceptor.Chain): Response {

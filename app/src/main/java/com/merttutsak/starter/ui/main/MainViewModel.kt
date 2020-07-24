@@ -18,7 +18,7 @@ class MainViewModel @Inject internal constructor() : BaseViewModel<MainNavigator
     fun getTitle() {
         navigator.showLoading()
         disposable.plusAssign(
-            dataManagerImp.apiHelperImp.getHome(appLanguageProvider.getAppLanguage().code())
+            appDataManager.apiHelperImp.getHome(appLanguageProvider.getAppLanguage().code())
                 .compose(SchedulerProvider.ioToMainObservableScheduler())
                 .subscribe {
                     resourceAppName.value = (R.string.app_name)

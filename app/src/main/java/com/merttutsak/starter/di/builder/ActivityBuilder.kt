@@ -1,8 +1,7 @@
 package com.merttutsak.starter.di.builder
 
-
-import com.merttutsak.starter.ui.main.MainActivityModule
 import com.merttutsak.starter.ui.main.MainActivity
+import com.merttutsak.starter.ui.main.MainActivityModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

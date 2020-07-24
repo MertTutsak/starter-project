@@ -8,15 +8,19 @@ import javax.inject.Inject
 
 class App : DaggerApplication() {
 
+    private val applicationInjector = DaggerAppComponent.builder()
+        .application(this)
+        .build()
+
     @Inject
     lateinit var initializers: AppInitializers
 
     override fun onCreate() {
+
         super.onCreate()
+
         initializers.init(this)
     }
 
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerAppComponent.builder().create(this)
-    }
+    override fun applicationInjector(): AndroidInjector<out DaggerApplication> = applicationInjector
 }

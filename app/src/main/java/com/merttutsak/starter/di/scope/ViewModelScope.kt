@@ -1,12 +1,8 @@
-package com.merttutsak.starter.di
+package com.merttutsak.starter.di.scope
 
 import androidx.lifecycle.ViewModel
 import dagger.MapKey
 import kotlin.reflect.KClass
-
-/**
- * Created by burhankarakurt on 7.02.2020.
- */
 
 @Target(
     AnnotationTarget.FUNCTION,
@@ -15,4 +11,4 @@ import kotlin.reflect.KClass
 )
 @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
 @MapKey
-internal annotation class ViewModelKey(val value: KClass<out ViewModel>)
+internal annotation class ViewModelScope(val value: KClass<out ViewModel>)

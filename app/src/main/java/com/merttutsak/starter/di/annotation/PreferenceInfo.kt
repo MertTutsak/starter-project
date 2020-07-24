@@ -1,4 +1,4 @@
-package com.merttutsak.starter.di
+package com.merttutsak.starter.di.annotation
 
 import javax.inject.Qualifier
 

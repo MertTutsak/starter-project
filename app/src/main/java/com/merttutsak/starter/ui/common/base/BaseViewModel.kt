@@ -1,7 +1,7 @@
 package com.merttutsak.starter.ui.common.base
 
 import androidx.lifecycle.ViewModel
-import com.merttutsak.starter.data.manager.DataManagerImp
+import com.merttutsak.starter.data.manager.AppDataManager
 import com.merttutsak.starter.data.remote.model.base.BaseResponse
 import com.merttutsak.starter.utility.delegate.OnceCreatableDelegate
 import com.merttutsak.starter.utility.provider.AppLanguageProvider
@@ -15,7 +15,7 @@ abstract class BaseViewModel<N : BaseNavigator> : ViewModel() {
     lateinit var disposable: CompositeDisposable
 
     @Inject
-    lateinit var dataManagerImp: DataManagerImp
+    lateinit var appDataManager: AppDataManager
 
     @Inject
     lateinit var appLanguageProvider: AppLanguageProvider

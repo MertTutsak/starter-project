@@ -11,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 
-class DataManagerImp @Inject internal constructor(
+class AppDataManager @Inject internal constructor(
     val compositeDisposable: CompositeDisposable,
     val apiHelperImp: ApiHelperImp,
     val db: AppDatabase,
