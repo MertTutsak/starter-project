@@ -1,7 +1,9 @@
 package com.merttutsak.starter.ui.common.base.view.activity;
 
 import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
@@ -13,7 +15,10 @@ import com.merttutsak.starter.ui.common.components.progressdialog.LottieProgress
 import com.merttutsak.starter.utility.delegate.AutoClearedActivityValue
 import com.merttutsak.starter.utility.extension.*
 import com.merttutsak.starter.utility.helper.ThemeHelper
+import com.merttutsak.starter.utility.wrapper.AppContextWrapper
+import com.orhanobut.logger.Logger
 import dagger.android.support.DaggerAppCompatActivity
+import io.reactivex.plugins.RxJavaPlugins
 import javax.inject.Inject
 
 abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel<*>> :
@@ -32,13 +37,12 @@ abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel<*>> :
 
     open fun onCreateActivity(savedInstanceState: Bundle?) {
         viewDataBinding = DataBindingUtil.setContentView(this, layoutId)
-        if(!this.javaClass.genericInterfaces.isNullOrEmpty()){
+        if (!this.javaClass.genericInterfaces.isNullOrEmpty()) {
             viewModel.setNav(this)
         }
     }
 
     open fun bindView() {
-        tag()
         viewDataBinding.lifecycleOwner = this
     }
 
@@ -56,6 +60,34 @@ abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel<*>> :
         setToolbar()
     }
 
+    //TODO viewmodel inject hata
+    /*override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(
+            AppContextWrapper.wrap(
+                newBase,
+                viewModel.appLanguageProvider.getAppLanguage()
+            )
+        )
+    }
+
+    override fun applyOverrideConfiguration(overrideConfiguration: Configuration?) {
+        super.applyOverrideConfiguration(
+            AppContextWrapper.wrap(
+                applicationContext,
+                viewModel.appLanguageProvider.getAppLanguage()
+            ).resources.configuration
+        )
+    }*/
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            super.onBackPressed()
+        } else {
+            //TODO show dialog if user wants to exit app
+            finish()
+        }
+    }
+
     override fun hideLoading() {
         progressDialog.notNull { it.cancel() }
     }
@@ -70,26 +102,9 @@ abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel<*>> :
     }
 
     override fun showFail(apiError: ApiError, friendlyMessage: FriendlyMessage?) {
-        friendlyMessage?.let {//TODO: dialog utils ile duzelt
+        friendlyMessage?.let {
+            //TODO: show dialog by DialogUtils
             this.showToast(friendlyMessage.title)
         }
     }
-
-    /* override fun attachBaseContext(newBase: Context) {
-         super.attachBaseContext(
-             AppContextWrapper.wrap(
-                 newBase,
-                 viewModel.appLanguageProvider.getAppLanguage()
-             )
-         )
-     }
-
-     override fun applyOverrideConfiguration(overrideConfiguration: Configuration?) {
-         super.applyOverrideConfiguration(
-             AppContextWrapper.wrap(
-                 applicationContext,
-                 viewModel.appLanguageProvider.getAppLanguage()
-             ).resources.configuration
-         )
-     }*/
 }
