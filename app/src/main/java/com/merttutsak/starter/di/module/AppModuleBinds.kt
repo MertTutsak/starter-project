@@ -16,4 +16,8 @@ abstract class AppModuleBinds {
     @Binds
     abstract fun provideStetho(bind: StethoInitializer): AppInitializer
 
+    @IntoSet
+    @Binds
+    abstract fun provideRx(bind: RxInitializer): AppInitializer
+
 }
