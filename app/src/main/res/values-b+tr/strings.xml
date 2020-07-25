@@ -11,6 +11,16 @@
     <string name="language_button_text"> Dil Degistirme </string>
     <string name="theme_button_text"> Tema Degistir </string>
 
+    <!-- Dialog -->
+    <string name="dialog_default_warning_title">Uyari</string>
+    <string name="dialog_default_warning_desc">Bekelnmeyen bir hata olustu!</string>
+    <!-- Dialog -->
+
+    <!-- Label -->
+    <string name="label_okey">Tamam</string>
+    <string name="label_cancel">Iptal</string>
+    <!-- Label -->
+
     <!--Bottom Sheet-->
     \<string name="bottomsheet_dialog_text"> Example Bottomsheet Dialog </string>
     <string name="bottomsheet_button_text"> Show Bottomsheet Dialog </string>

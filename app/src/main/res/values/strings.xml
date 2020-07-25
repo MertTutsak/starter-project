@@ -11,6 +11,16 @@
     <string name="language_button_text"> Change Language </string>
     <string name="theme_button_text"> Change Theme </string>
 
+    <!-- Dialog -->
+    <string name="dialog_default_warning_title">Warning</string>
+    <string name="dialog_default_warning_desc">An unexpected error has occurred!</string>
+    <!-- Dialog -->
+
+    <!-- Label -->
+    <string name="label_okey">Okey</string>
+    <string name="label_cancel">Cancel</string>
+    <!-- Label -->
+
     <!--Bottom Sheet-->
     \<string name="bottomsheet_dialog_text"> Example Bottomsheet Dialog </string>
     <string name="bottomsheet_button_text"> Show Bottomsheet Dialog </string>

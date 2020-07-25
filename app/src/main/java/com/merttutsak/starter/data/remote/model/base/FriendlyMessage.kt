@@ -19,7 +19,10 @@ open class FriendlyMessage(
     @SerializedName("cancelable")
     @Expose
     var cancelable: Boolean? = null,
-    @SerializedName("buttonSet")
+    @SerializedName("positiveButton")
     @Expose
-    var buttonSet: List<ButtonSet> = ArrayList()
+    var positiveButton: ButtonSet? = null,
+    @SerializedName("negativeButton")
+    @Expose
+    var negativeButton: ButtonSet? = null
 ) : Parcelable
