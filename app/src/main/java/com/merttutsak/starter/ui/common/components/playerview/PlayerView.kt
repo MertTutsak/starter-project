@@ -2,13 +2,10 @@ package com.merttutsak.starter.ui.common.components.playerview
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import butterknife.BindView
-import butterknife.ButterKnife
-import com.merttutsak.starter.ui.common.components.ldsbutton.LdsButton
-import com.merttutsak.starter.R
+import com.merttutsak.starter.ui.common.components.button.BaseButton
 
 
 class PlayerView : LinearLayout {
@@ -16,11 +13,11 @@ class PlayerView : LinearLayout {
     @BindView(R.id.seekBar)
     lateinit var seekBar: SeekBar
     @BindView(R.id.backPlayer)
-    lateinit var backPlayer: LdsButton
+    lateinit var backPlayer: BaseButton
     @BindView(R.id.actionPlayer)
-    lateinit var actionPlayer: LdsButton
+    lateinit var actionPlayer: BaseButton
     @BindView(R.id.nextPlayer)
-    lateinit var nextPlayer: LdsButton
+    lateinit var nextPlayer: BaseButton
 
     private var mUserIsSeeking = false
     private var mPlayerAdapter: PlayerAdapter? = null

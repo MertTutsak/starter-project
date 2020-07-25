@@ -1,12 +1,10 @@
-package com.merttutsak.starter.ui.common.components.ldsbutton
+package com.merttutsak.starter.ui.common.components.button
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatButton
-import androidx.core.content.ContextCompat
-import com.merttutsak.starter.R
 
-class LdsButton : AppCompatButton {
+class BaseButton : AppCompatButton {
     enum class State {
         DISABLED,
         ENABLE

@@ -22,21 +22,21 @@
             android:layout_marginTop="8dp"
             android:orientation="horizontal">
 
-            <com.merttutsak.starter.ui.common.components.ldsbutton.LdsButton
+            <com.merttutsak.starter.ui.common.components.button.BaseButton
                 android:id="@+id/backPlayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:text="Back" />
 
-            <com.merttutsak.starter.ui.common.components.ldsbutton.LdsButton
+            <com.merttutsak.starter.ui.common.components.button.BaseButton
                 android:id="@+id/actionPlayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:text="start" />
 
-            <com.merttutsak.starter.ui.common.components.ldsbutton.LdsButton
+            <com.merttutsak.starter.ui.common.components.button.BaseButton
                 android:id="@+id/nextPlayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

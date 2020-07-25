@@ -1,10 +1,10 @@
-package com.merttutsak.starter.ui.common.components.ldstextview
+package com.merttutsak.starter.ui.common.components.textview
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 
-class LdsTextView : AppCompatTextView {
+class BaseTextView : AppCompatTextView {
 
     constructor(context: Context?) : super(context) {
         init(context, null)
