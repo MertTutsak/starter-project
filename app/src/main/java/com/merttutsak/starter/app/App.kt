@@ -16,9 +16,7 @@ class App : DaggerApplication() {
     lateinit var initializers: AppInitializers
 
     override fun onCreate() {
-
         super.onCreate()
-
         initializers.init(this)
     }
 
