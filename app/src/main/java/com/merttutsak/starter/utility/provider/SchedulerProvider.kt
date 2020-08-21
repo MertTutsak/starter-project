@@ -1,8 +1,8 @@
 package com.merttutsak.starter.utility.provider
 
-import io.reactivex.*
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.*
+import io.reactivex.rxjava3.schedulers.Schedulers
 
 
 object SchedulerProvider {
@@ -40,6 +40,6 @@ object SchedulerProvider {
 
     fun getIOThreadScheduler() = Schedulers.io()
 
-    fun getMainThreadScheduler() = AndroidSchedulers.mainThread()
+    fun getMainThreadScheduler(): Scheduler = AndroidSchedulers.mainThread()
 
 }

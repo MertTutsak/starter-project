@@ -5,7 +5,7 @@ import com.merttutsak.starter.data.manager.AppDataManager
 import com.merttutsak.starter.data.remote.model.base.BaseResponse
 import com.merttutsak.starter.utility.delegate.OnceCreatableDelegate
 import com.merttutsak.starter.utility.provider.AppLanguageProvider
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import java.lang.ref.WeakReference
 import javax.inject.Inject
 

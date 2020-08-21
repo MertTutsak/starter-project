@@ -1,10 +1,11 @@
 package com.merttutsak.starter.utility.extension
 
 import com.merttutsak.starter.data.remote.service.resource.Resource
-import io.reactivex.Observable
-import io.reactivex.ObservableTransformer
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.core.ObservableTransformer
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.Disposable
+
 
 fun <T> applyLoading(): ObservableTransformer<Resource<T>, Resource<T>> = ObservableTransformer { upstream ->
     Observable.just(Resource.loading<T>()).concatWith(upstream)

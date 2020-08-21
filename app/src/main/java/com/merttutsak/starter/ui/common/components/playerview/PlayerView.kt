@@ -2,14 +2,18 @@ package com.merttutsak.starter.ui.common.components.playerview
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import butterknife.BindView
+import butterknife.ButterKnife
+import com.merttutsak.starter.R
 import com.merttutsak.starter.ui.common.components.button.BaseButton
 
 
 class PlayerView : LinearLayout {
 
+    /*TODO:kaldir*/
     @BindView(R.id.seekBar)
     lateinit var seekBar: SeekBar
     @BindView(R.id.backPlayer)
@@ -34,16 +38,6 @@ class PlayerView : LinearLayout {
         context,
         attrs,
         defStyleAttr
-    ) {
-        init(context, attrs)
-    }
-
-
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int, defStyleRes: Int) : super(
-        context,
-        attrs,
-        defStyleAttr,
-        defStyleRes
     ) {
         init(context, attrs)
     }

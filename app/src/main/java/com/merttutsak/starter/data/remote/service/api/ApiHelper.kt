@@ -1,7 +1,7 @@
 package com.merttutsak.starter.data.remote.service.api
 
 import com.merttutsak.starter.data.remote.model.response.home.HomeResponse
-import io.reactivex.Observable
+import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
 import retrofit2.http.Query
 

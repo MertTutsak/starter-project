@@ -1,10 +1,6 @@
 package com.merttutsak.starter.ui.common.base.view.activity;
 
-import android.content.Context
-import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.merttutsak.starter.data.remote.model.base.FriendlyMessage
@@ -15,10 +11,7 @@ import com.merttutsak.starter.ui.common.components.progressdialog.LottieProgress
 import com.merttutsak.starter.utility.delegate.AutoClearedActivityValue
 import com.merttutsak.starter.utility.extension.*
 import com.merttutsak.starter.utility.helper.ThemeHelper
-import com.merttutsak.starter.utility.wrapper.AppContextWrapper
-import com.orhanobut.logger.Logger
 import dagger.android.support.DaggerAppCompatActivity
-import io.reactivex.plugins.RxJavaPlugins
 import javax.inject.Inject
 
 abstract class BaseActivity<VB : ViewDataBinding, VM : BaseViewModel<*>> :

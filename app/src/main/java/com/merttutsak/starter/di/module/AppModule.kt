@@ -12,7 +12,7 @@ import com.merttutsak.starter.utility.provider.AppLanguageProvider
 import com.merttutsak.starter.utility.provider.SchedulerProvider
 import dagger.Module
 import dagger.Provides
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import javax.inject.Singleton
 
 @Module(includes = [AppModuleBinds::class])

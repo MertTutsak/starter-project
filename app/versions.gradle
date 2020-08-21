@@ -16,6 +16,7 @@ versions.espresso_core = "3.2.0-alpha02"
 versions.lifecycle = "2.1.0"
 versions.retrofit = "2.6.2"
 versions.picasso = "2.71828"
+/*TODO:kaldir*/
 versions.butterknife = "10.1.0"
 versions.gson = "2.8.5"
 versions.sdp = "1.0.6"
@@ -23,12 +24,10 @@ versions.chuck = "1.1.0"
 versions.logger = "2.2.0"
 versions.leak_canary = "1.6.3"
 versions.easy_permission = "3.0.0"
-versions.firebase_analytics = "17.4.4"
-versions.firebase_crashlytics = "17.1.1"
-versions.firebase_core = "17.2.0"
-versions.firebase_messaging = "20.2.3"
-versions.firebase_dynamiclink = "19.0.0"
-versions.crashlytics = "2.9.9@aar"
+versions.firebase_analytics = "17.5.0"
+versions.firebase_crashlytics = "17.2.1"
+versions.firebase_messaging = "20.2.4"
+versions.firebase_dynamiclink = "19.1.0"
 versions.google_play_services_maps = "17.0.0"
 versions.google_play_services_location = "16.0.0"
 versions.google_play_services_gcm = "16.0.0"
@@ -37,19 +36,25 @@ versions.joda_time = "2.9.9"
 
 versions.glide = "4.9.0"
 versions.dagger2 = "2.24"
-versions.adapter_rxjava2 = "2.6.0"
-versions.rxandroid = "2.1.1"
-versions.rxkotlin = "2.4.0"
-versions.rxjava = "2.2.14"
+versions.adapter_rxjava = "3.0.0"
+versions.rxandroid = "3.0.0"
+versions.rxkotlin = "3.0.0"
+versions.rxjava = "3.0.6"
 versions.room_version = "2.2.3"
 
 versions.lottie = "3.0.7"
-versions.leak_canary = "2.0-beta-2"
+versions.leak_canary = "2.4"
 versions.chuck = "1.1.0"
 versions.stetho = "1.5.1"
 versions.spinKit = "1.4.0"
 
 def deps = [:]
+
+/*TODO:kaldir*/
+def butterknife = [:]
+butterknife.runtime = "com.jakewharton:butterknife:$versions.butterknife"
+butterknife.compiler = "com.jakewharton:butterknife-compiler:$versions.butterknife"
+deps.butterknife = butterknife
 
 def androidx = [:]
 androidx.appcompat = "androidx.appcompat:appcompat:$versions.appcompat"
@@ -61,30 +66,20 @@ androidx.core_ktx = "androidx.core:core-ktx:$versions.core_ktx"
 androidx.constraintlayout = "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
 deps.androidx = androidx
 
-def butterknife = [:]
-butterknife.runtime = "com.jakewharton:butterknife:$versions.butterknife"
-butterknife.compiler = "com.jakewharton:butterknife-compiler:$versions.butterknife"
-deps.butterknife = butterknife
+def google = [:]
 
 def firebase = [:]
-firebase.firebase_analytics = "com.google.firebase:firebase-analytics:$versions.firebase_analytics"
-firebase.firebase_crashlytics = "com.google.firebase:firebase-crashlytics:$versions.firebase_crashlytics"
-firebase.firebase_core = "com.google.firebase:firebase-core:$versions.firebase_core"
-firebase.firebase_messaging = "com.google.firebase:firebase-messaging:$versions.firebase_messaging"
-firebase.firebase_dynamiclink = "com.google.firebase:firebase-dynamic-links:$versions.firebase_dynamiclink"
-deps.firebase = firebase
+firebase.analytics = "com.google.firebase:firebase-analytics-ktx:$versions.firebase_analytics"
+firebase.crashlytics = "com.google.firebase:firebase-crashlytics-ktx:$versions.firebase_crashlytics"
+firebase.messaging = "com.google.firebase:firebase-messaging:$versions.firebase_messaging"
+firebase.dynamiclink = "com.google.firebase:firebase-dynamic-links-ktx:$versions.firebase_dynamiclink"
+google.firebase = firebase
 
-def google_play_services = [:]
-google_play_services.location = "com.google.android.gms:play-services-location:$versions.google_play_services_location"
-google_play_services.maps = "com.google.android.gms:play-services-maps:$versions.google_play_services_maps"
-google_play_services.gcm = "com.google.android.gms:play-services-gcm:$versions.google_play_services_gcm"
-deps.google_play_services = google_play_services
-
-def google = [:]
-google.gson = "com.google.code.gson:gson:$versions.gson"
-google.material = "com.google.android.material:material:$versions.material"
-google.zxing = "com.google.zxing:core:$versions.zxing"
-deps.google = google
+def play_services = [:]
+play_services.location = "com.google.android.gms:play-services-location:$versions.google_play_services_location"
+play_services.maps = "com.google.android.gms:play-services-maps:$versions.google_play_services_maps"
+play_services.gcm = "com.google.android.gms:play-services-gcm:$versions.google_play_services_gcm"
+google.play_services = play_services
 
 def dagger = [:]
 dagger.dagger = "com.google.dagger:dagger:$versions.dagger2"
@@ -92,34 +87,43 @@ dagger.android = "com.google.dagger:dagger-android:$versions.dagger2"
 dagger.support = "com.google.dagger:dagger-android-support:$versions.dagger2"
 dagger.processor = "com.google.dagger:dagger-android-processor:$versions.dagger2"
 dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger2"
-deps.dagger = dagger
-
-def rxjava2 = [:]
-rxjava2.rxandroid = "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
-rxjava2.rxjava = "io.reactivex.rxjava2:rxjava:$versions.rxjava"
-rxjava2.rxkotlin = "io.reactivex.rxjava2:rxkotlin:$versions.rxkotlin"
-rxjava2.adapter = "com.squareup.retrofit2:adapter-rxjava2:$versions.adapter_rxjava2"
-rxjava2.room = "android.arch.persistence.room:rxjava2:$versions.room_version"
-deps.rxjava2 = rxjava2
+google.dagger = dagger
 
 def room = [:]
 room.runtime = "androidx.room:room-runtime:$versions.room_version"
 room.compiler = "android.arch.persistence.room:compiler:$versions.room_version"
-deps.room = room
+room.rx_adapter = "android.arch.persistence.room:rxjava2:$versions.room_version"
+google.room = room
+
+google.gson = "com.google.code.gson:gson:$versions.gson"
+google.material = "com.google.android.material:material:$versions.material"
+google.zxing = "com.google.zxing:core:$versions.zxing"
+
+deps.google = google
+
+def rx = [:]
+rx.android = "io.reactivex.rxjava3:rxandroid:$versions.rxandroid"
+rx.java = "io.reactivex.rxjava3:rxjava:$versions.rxjava"
+rx.kotlin = "io.reactivex.rxjava3:rxkotlin:$versions.rxkotlin"
+deps.rx = rx
 
 def squareup = [:]
+
 def retrofit = [:]
 retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.rx_adapter = "com.github.akarnokd:rxjava3-retrofit-adapter:$versions.adapter_rxjava"
 squareup.retrofit = retrofit
-squareup.picasso = "com.squareup.picasso:picasso:$versions.picasso"
-squareup.otto = "com.squareup:otto:$versions.otto"
-deps.squareup = squareup
 
 def leak_canary = [:]
 leak_canary.debug = "com.squareup.leakcanary:leakcanary-android:$versions.leak_canary"
 leak_canary.live = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leak_canary"
-deps.leak_canary = leak_canary
+squareup.leak_canary = leak_canary
+
+squareup.picasso = "com.squareup.picasso:picasso:$versions.picasso"
+squareup.otto = "com.squareup:otto:$versions.otto"
+
+deps.squareup = squareup
 
 def chuck = [:]
 chuck.debug = "com.readystatesoftware.chuck:library:$versions.chuck"
@@ -131,15 +135,25 @@ facebook.stetho = "com.facebook.stetho:stetho:$versions.stetho"
 facebook.stetho_okhttp3 = "com.facebook.stetho:stetho-okhttp3:$versions.stetho"
 deps.facebook = facebook
 
-deps.junit = "junit:junit:$versions.junit"
-deps.sdp = "com.intuit.sdp:sdp-android:$versions.sdp"
-deps.logger = "com.orhanobut:logger:$versions.logger"
-deps.easy_permission = "pub.devrel:easypermissions:$versions.easy_permission"
-deps.crashlytics = "com.crashlytics.sdk.android:crashlytics:$versions.crashlytics"
-deps.joda_time = "joda-time:joda-time:$versions.joda_time"
-deps.glide = "com.github.bumptech.glide:glide:$versions.glide"
-deps.lottie = "com.airbnb.android:lottie:$versions.lottie"
-deps.spinKit = "com.github.ybq:Android-SpinKit:$versions.spinKit"
+def animation = [:]
+animation.lottie = "com.airbnb.android:lottie:$versions.lottie"
+animation.spinKit = "com.github.ybq:Android-SpinKit:$versions.spinKit"
+deps.animation = animation
+
+def tools = [:]
+tools.logger = "com.orhanobut:logger:$versions.logger"
+tools.easy_permission = "pub.devrel:easypermissions:$versions.easy_permission"
+tools.joda_time = "joda-time:joda-time:$versions.joda_time"
+tools.sdp = "com.intuit.sdp:sdp-android:$versions.sdp"
+deps.tools = tools
+
+def test = [:]
+test.junit = "junit:junit:$versions.junit"
+deps.test = test
+
+def image = [:]
+image.glide = "com.github.bumptech.glide:glide:$versions.glide"
+deps.image = image
 
 ext.deps = deps
 
@@ -156,8 +170,8 @@ app_id.id_dev = "com.merttutsak.starter"
 ext.app_id = app_id
 
 def app_version = [:]
-app_version.version_code = 9
-app_version.version_name = "1.0.8"
+app_version.version_code = 1
+app_version.version_name = "1.0.0"
 ext.app_version = app_version
 
 static def addRepos(RepositoryHandler handler) {

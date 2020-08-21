@@ -3,8 +3,6 @@ package com.merttutsak.starter.data.remote.model.base
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.merttutsak.starter.data.remote.model.base.FriendlyMessage
-import com.merttutsak.starter.data.remote.model.base.ProcessStatus
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize

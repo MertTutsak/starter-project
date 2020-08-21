@@ -7,7 +7,6 @@ import com.merttutsak.starter.data.remote.service.api.ApiHelperImp
 import com.merttutsak.starter.utility.Constants
 import com.merttutsak.starter.utility.extension.isNull
 import com.merttutsak.starter.utility.helper.analytics.AnalyticsHelper
-import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 
